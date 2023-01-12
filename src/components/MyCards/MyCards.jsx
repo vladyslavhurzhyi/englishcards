@@ -5,12 +5,12 @@ export const MyCards = ({ cards, toggleRotate, isRotate }) => {
   return (
     <>
       {cards.map(card => (
-        <CardWrap onClick={toggleRotate} key={card.engText} isRotate={isRotate}>
+        <CardWrap onClick={toggleRotate} key={card.eng} isRotate={isRotate}>
           <CardFace className="face" frontFaceStyle>
-            {card.engText}
+            {card.eng}
           </CardFace>
           <CardFace className="back" backFaceStyle>
-            {card.ruText}
+            {card.translate}
           </CardFace>
         </CardWrap>
       ))}
