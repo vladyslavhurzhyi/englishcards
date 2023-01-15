@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-// import { MyCards } from './MyCards/MyCards';
 import { useState } from 'react';
 import { Swiper } from './Swiper/Swiper';
 import { AddCards } from './AddCards/AddCards';
 import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { getDataFromLS } from 'service/getDataFromLS';
+import { Home } from './Home/Home';
 
 const LOKAL_STORAGE = 'cards';
 
@@ -25,6 +25,12 @@ export const App = () => {
     });
   };
 
+  const deleteCard = id => {
+    return setCards(prevState => {
+      return prevState.filter(card => card.id !== id);
+    });
+  };
+
   const resetRotate = () => {
     setRotate(true);
   };
@@ -38,6 +44,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Home cards={cards} />} />
         <Route
           path="mycards"
           element={
@@ -52,7 +59,9 @@ export const App = () => {
         <Route
           path="add-new-cards"
           addCard={setCards}
-          element={<AddCards addCard={addCard} />}
+          element={
+            <AddCards cards={cards} addCard={addCard} deleteCard={deleteCard} />
+          }
         ></Route>
         <Route
           path="option"

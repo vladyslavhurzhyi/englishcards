@@ -18,7 +18,7 @@ export const Swiper = ({ cards, toggleRotate, isRotate, resetRotate }) => {
   return (
     <>
       {cards.length < 1 ? (
-        <Link to={'/add-new-cards'}>Добавь первую карту</Link>
+        <Link to={'/add-new-cards'}>Добавить первую карточку</Link>
       ) : (
         <div>
           <SwiperStyled
