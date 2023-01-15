@@ -7,16 +7,32 @@ import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { getDataFromLS } from 'service/getDataFromLS';
 import { Home } from './Home/Home';
+import { Options } from './Options/Options';
 
 const LOKAL_STORAGE = 'cards';
 
 export const App = () => {
   const [cards, setCards] = useState(() => getDataFromLS(LOKAL_STORAGE));
   const [isRotate, setRotate] = useState(true);
+  const [isRandom, setIsRandom] = useState(false);
+
+  useEffect(() => {
+    if (isRandom) {
+      setCards(prevState => {
+        return prevState.sort(() => Math.random() - 0.5);
+      });
+    }
+
+    setIsRandom(false);
+  }, [isRandom]);
 
   useEffect(() => {
     localStorage.setItem(LOKAL_STORAGE, JSON.stringify(cards));
   }, [cards]);
+
+  const onIsRandom = () => {
+    setIsRandom(true);
+  };
 
   const addCard = (eng, translate) => {
     const newCard = { eng, translate, id: nanoid() };
@@ -65,12 +81,7 @@ export const App = () => {
         ></Route>
         <Route
           path="option"
-          element={
-            <div>
-              Option
-              <div>Settings card</div>
-            </div>
-          }
+          element={<Options onIsRandom={onIsRandom} />}
         ></Route>
       </Route>
     </Routes>
