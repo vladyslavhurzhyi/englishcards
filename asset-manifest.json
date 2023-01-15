@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/englishcards/static/css/main.121181b1.css",
-    "main.js": "/englishcards/static/js/main.b1f3894b.js",
+    "main.js": "/englishcards/static/js/main.5b9e1371.js",
     "index.html": "/englishcards/index.html",
     "main.121181b1.css.map": "/englishcards/static/css/main.121181b1.css.map",
-    "main.b1f3894b.js.map": "/englishcards/static/js/main.b1f3894b.js.map"
+    "main.5b9e1371.js.map": "/englishcards/static/js/main.5b9e1371.js.map"
   },
   "entrypoints": [
     "static/css/main.121181b1.css",
-    "static/js/main.b1f3894b.js"
+    "static/js/main.5b9e1371.js"
   ]
 }
